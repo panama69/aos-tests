@@ -1,0 +1,12 @@
+.idea/
+out/
+*.iml
+
+### Java template
+# Compiled class file
+*.class
+
+#LeanFT
+RunResults/
+target/
+
