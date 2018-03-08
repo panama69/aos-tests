@@ -13,7 +13,6 @@ import org.junit.Test;
 import com.hp.lft.sdk.*;
 import com.hp.lft.verifications.*;
 
-
 import unittesting.*;
 import com.hp.lft.sdk.web.*;
 
@@ -21,7 +20,6 @@ import com.hp.lft.sdk.web.*;
 public class LeanFtTest extends UnitTestClassBase {
     private Browser browser;
     private ApplicationModel aosModel;
-    private WebElement TOTAL;
 
     public LeanFtTest() {
         //Change this constructor to private if you supply your own public constructor
@@ -49,10 +47,6 @@ public class LeanFtTest extends UnitTestClassBase {
         browser = BrowserFactory.launch(BrowserType.CHROME);
         browser.navigate("http://nimbusserver.aos.com:8000/#/");
         aosModel = new ApplicationModel(browser);
-        TOTAL = browser.describe(WebElement.class, new WebElementDescription.Builder()
-                .className("roboto-medium ng-binding")
-                .innerText(new RegExpProperty("\\$\\d.+\\.\\d\\d"))
-                .tagName("SPAN").build());
     }
 
     @Test
@@ -70,7 +64,7 @@ public class LeanFtTest extends UnitTestClassBase {
 
         String total_on_button = aosModel.CHECK_OUT().getInnerText();
 
-        String total_on_list = TOTAL.getInnerText();
+        String total_on_list = aosModel.TOTAL().getInnerText();
 
 
         Matcher m = Pattern.compile("\\$\\d.+\\.\\d\\d").matcher(total_on_button); m.find();
