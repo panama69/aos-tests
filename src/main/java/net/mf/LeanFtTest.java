@@ -51,16 +51,21 @@ public class LeanFtTest extends UnitTestClassBase {
 
     @Test
     public void buySpeaker() throws GeneralLeanFtException, InterruptedException {
+        
+        aosModel.SPEAKERS().highlight();
         aosModel.SPEAKERS().click();
 
         aosModel.SPEAKER().highlight();
         aosModel.SPEAKER().click();
 
+        aosModel.ADD_TO_CART().highlight();
         aosModel.ADD_TO_CART().click();
 
-        browser.describe(WebElement.class, new WebElementDescription.Builder()
+        WebElement cart =  browser.describe(WebElement.class, new WebElementDescription.Builder()
                 .id("menuCart")
-                .tagName("svg").build()).click();
+                .tagName("svg").build());
+        cart.highlight();
+        cart.click();
 
         String total_on_button = aosModel.CHECK_OUT().getInnerText();
 
