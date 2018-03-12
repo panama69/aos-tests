@@ -51,9 +51,6 @@ public class LeanFtTest extends UnitTestClassBase {
 
     @Test
     public void buySpeaker() throws GeneralLeanFtException, InterruptedException {
-        
-        aosModel.SPEAKERS().highlight();
-        aosModel.SPEAKERS().click();
 
         aosModel.SPEAKER().highlight();
         aosModel.SPEAKER().click();
